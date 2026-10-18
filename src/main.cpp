@@ -1,18 +1,9 @@
 #include <Arduino.h>
 #include "config.h"
+#include "LDR.h"
 
 
 u32_t lastTimeChangeLed = 0;
-
-bool ldr_State = false;
-u32_t lastTimeChangeLdr = 0;
-u16_t ldr_resolution = 4095;
-//u16_t ldr_N = 5; //max 4095
-u16_t ldr_rawData = 0; //  max 4095
-//u32_t ldr_Avg = 0; //
-//u32_t ldr_sum = 0; // 
-u16_t ldr_filtered = 0;
-float ldr_alpha = 0.1f; //коефіцієнт швидкості реакції фільтра
 
 bool btn_state_alarm = false;
 bool btn_state_crash = false;
@@ -44,27 +35,14 @@ void setup(){
   Serial.printf("Setup DONE \n");
 
   //ldr setup
-  ldr_rawData = analogRead(LDR);
-  ldr_filtered = ldr_rawData;
-  ldr_filtered = ldr_filtered+ldr_alpha*(analogRead(LDR)-ldr_filtered);
+  
 
 }
 
 void loop(){
   //Serial.printf("LDR rawData %d LDR filtered %d \n", ldr_rawData, ldr_filtered);
 
-if(millis() - lastTimeChangeLdr >= LDR_PERIOD_MS){
-  ldr_rawData = analogRead(LDR);
-  ldr_filtered = ldr_filtered+ldr_alpha*(ldr_rawData-ldr_filtered);
-  lastTimeChangeLdr = millis();
 
-  if(ldr_filtered >= LDR_THRESHOLD){
-    ldr_State = true;
-  } else if(ldr_filtered <=LDR_THRESHOLD_DOWN) {
-    ldr_State = false;
-  }
-
-}
 
 if(ldr_State == true)
 {
