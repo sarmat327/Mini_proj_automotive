@@ -5,17 +5,7 @@
 
 u32_t lastTimeChangeLed = 0;
 
-bool btn_state_alarm = false;
-bool btn_state_crash = false;
-bool btn_was_pressed = false;
 
-bool btn_short_event = false;
-bool btn_long_event = false;
-bool btn_ispressed = false;
-u32_t lastTimeChangeBtn = 0;
-u32_t btn_timekeeper = 0;
-u32_t btn_time_press = 0;
-u32_t btn_time_release = 0;
 
 
 
@@ -28,7 +18,7 @@ void setup(){
   pinMode(LED_WHITE, OUTPUT);
   pinMode(LED_YELLOW, OUTPUT);
   
-  pinMode(LDR, INPUT);
+  
   pinMode(BTN, INPUT_PULLDOWN);
 
   delay(1000);
