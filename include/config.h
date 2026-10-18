@@ -1,0 +1,22 @@
+#pragma once
+
+#define LDR 2
+#define LED_WHITE 15
+#define LED_YELLOW 16
+#define BTN 18
+
+
+#define LDR_PERIOD_MS 50
+#define LDR_THRESHOLD 2000
+#define LDR_THRESHOLD_DOWN 1900
+
+
+#define BTN_PERIOD_MS 50
+#define BTN_SHORT_PRESS_MS 500
+#define BTN_LONG_PRESS_MS 2000
+
+#define LED_BLINK_PERIOD_MS 500
+#define LED_BLINK_CRASH_PERIOD_MS 50
+
+
+
