@@ -10,6 +10,7 @@ void Led::init(){
 
 
 void Led::handle_LDR(bool ldr_State){
+    
     if(ldr_State == true)
         {
             digitalWrite(LED_WHITE, HIGH);
@@ -18,9 +19,9 @@ void Led::handle_LDR(bool ldr_State){
         }
 }
  
-void Led::handle_BTN(u8_t btn_state){
-    
-    switch (btn_state){
+void Led::handle_BTN(u8_t state){
+  
+    switch (state){
 
         case NO_ACTIVE: digitalWrite(LED_YELLOW, LOW);
         break;

@@ -13,5 +13,5 @@ public:
 
     void init();
     void handle_LDR(bool ldr_State);
-    void handle_BTN(u8_t btn_state);
+    void handle_BTN(u8_t state);
 };
