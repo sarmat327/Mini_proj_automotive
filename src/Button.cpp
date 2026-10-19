@@ -23,10 +23,10 @@ void Button::poll(){
       {
         btn_was_pressed = false;
         btn_timekeeper = millis() - btn_time_press;
+        Serial.printf("timekeeper is %d \n", btn_timekeeper);
       }
 
 
-    //Serial.printf("btn_timekeeper: %d btn_time_release: %d btn_time_press %d \n", btn_timekeeper, btn_time_release, btn_time_press);
 
     if(btn_timekeeper >= BTN_SHORT_PRESS_MS && btn_timekeeper < BTN_LONG_PRESS_MS)
       {
@@ -50,15 +50,16 @@ void Button::poll(){
 
         btn_timekeeper = 0;
 
-      }
-
-     if(btn_timekeeper > BTN_LONG_PRESS_MS)
+      } 
+      
+      if(btn_timekeeper > BTN_LONG_PRESS_MS)
       {
        if(!btn_state_crash)
         {
           btn_state_alarm = false;
           btn_state_crash = true;
           btn_state = CRASH_STATE;
+          Serial.printf("STATE must CRASH: %d \n", btn_state);
           btn_time_press = 0;
           btn_time_release = 0;
           Serial.println("CRASH HAPPENED");

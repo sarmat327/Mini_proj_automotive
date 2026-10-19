@@ -11,20 +11,22 @@ void Led::init(){
 
 void Led::handle_LDR(bool ldr_State){
     if(ldr_State == true)
-{
-  digitalWrite(LED_WHITE, HIGH);
-} else {
-  digitalWrite(LED_WHITE, LOW);
-}
+        {
+            digitalWrite(LED_WHITE, HIGH);
+        } else {
+            digitalWrite(LED_WHITE, LOW);
+        }
 }
  
 void Led::handle_BTN(u8_t btn_state){
     
     switch (btn_state){
+
         case NO_ACTIVE: digitalWrite(LED_YELLOW, LOW);
         break;
 
         case ALARM_STATE: 
+                Serial.println("LED ALARM_STATE");
                 if (millis() - lastTimeChangeLed > LED_BLINK_PERIOD_MS)
                  {
                     lastTimeChangeLed = millis();
@@ -39,8 +41,10 @@ void Led::handle_BTN(u8_t btn_state){
     
                  }
                  break;
-                 
+
         case CRASH_STATE: 
+
+                Serial.println("LED CRASH_STATE");
                 if (millis() - lastTimeChangeLed > LED_BLINK_CRASH_PERIOD_MS) 
                     {
                         lastTimeChangeLed = millis();

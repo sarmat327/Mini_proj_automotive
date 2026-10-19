@@ -9,6 +9,7 @@ void Ldr::init()
     ldr_rawData = analogRead(LDR);
     ldr_filtered = ldr_rawData;
     ldr_filtered = ldr_filtered+ldr_alpha*(analogRead(LDR)-ldr_filtered);
+    
 }
 
 

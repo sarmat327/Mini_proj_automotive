@@ -11,9 +11,9 @@ Led Led_obj;
 
 
 void setup(){
+
   Serial.begin(115200);
-  delay(1000);
-  Serial.printf("Setup DONE \n");
+  Serial.println("setuped");
 
   ldr_obj.init();
   Button_obj.init();
@@ -22,7 +22,7 @@ void setup(){
 }
 
 void loop(){
-  
+ 
   ldr_obj.poll();
   Button_obj.poll();
   Led_obj.handle_LDR(ldr_obj.get_state());

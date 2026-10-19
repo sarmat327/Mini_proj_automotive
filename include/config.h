@@ -1,8 +1,8 @@
 #pragma once
 
 #define LDR 2
-#define LED_WHITE 15
-#define LED_YELLOW 16
+#define LED_WHITE 16
+#define LED_YELLOW 17
 #define BTN 18
 
 
@@ -18,7 +18,7 @@
 #define LED_BLINK_PERIOD_MS 500
 #define LED_BLINK_CRASH_PERIOD_MS 50
 
-enum BTN_STATE{
+enum BTN_STATES{
     NO_ACTIVE,
     ALARM_STATE,
     CRASH_STATE,
