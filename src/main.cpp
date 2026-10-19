@@ -1,78 +1,32 @@
 #include <Arduino.h>
 #include "config.h"
 #include "LDR.h"
+#include "LED.h"
+#include "BTN.h"
 
+Ldr ldr_obj;
+Button Button_obj;
+Led Led_obj;
 
-u32_t lastTimeChangeLed = 0;
-
-
-
-
-
-bool led_white_state = false;
-bool led_yellow_state = false;
 
 
 void setup(){
   Serial.begin(115200);
-  pinMode(LED_WHITE, OUTPUT);
-  pinMode(LED_YELLOW, OUTPUT);
-  
-  
-  
-
   delay(1000);
   Serial.printf("Setup DONE \n");
 
-  //ldr setup
-  
+  ldr_obj.init();
+  Button_obj.init();
+  Led_obj.init();
 
 }
 
 void loop(){
-  //Serial.printf("LDR rawData %d LDR filtered %d \n", ldr_rawData, ldr_filtered);
-
-
-
-if(ldr_State == true)
-{
-  digitalWrite(LED_WHITE, HIGH);
-} else {
-  digitalWrite(LED_WHITE, LOW);
-}
- 
-
-
-if(btn_state_alarm){
-    if (millis() - lastTimeChangeLed > LED_BLINK_PERIOD_MS)
-  {
-    lastTimeChangeLed = millis();
-    if(!led_yellow_state)
-      {
-        digitalWrite(LED_YELLOW, HIGH);
-        led_yellow_state = true;
-      } else {
-        digitalWrite(LED_YELLOW, LOW);
-        led_yellow_state = false;
-      }
-    
-    }
-  }
-if(btn_state_crash){
-    if (millis() - lastTimeChangeLed > LED_BLINK_CRASH_PERIOD_MS) 
-  {
-    lastTimeChangeLed = millis();
-    if(!led_yellow_state)
-      {
-        digitalWrite(LED_YELLOW, HIGH);
-        led_yellow_state = true;
-      } else {
-        digitalWrite(LED_YELLOW, LOW);
-        led_yellow_state = false;
-      }
-    }
-  }
-  if (btn_state_alarm == false && btn_state_crash == false) digitalWrite(LED_YELLOW, LOW);
+  
+  ldr_obj.poll();
+  Button_obj.poll();
+  Led_obj.handle_LDR(ldr_obj.get_state());
+  Led_obj.handle_BTN(Button_obj.get_state());
 
 }
 

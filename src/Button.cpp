@@ -34,6 +34,7 @@ void Button::poll(){
         {
           btn_state_crash = false;
           btn_state_alarm = true;
+          btn_state = ALARM_STATE;
           btn_time_press = 0;
           btn_time_release = 0;
           Serial.println("ALARM is ON");
@@ -41,6 +42,7 @@ void Button::poll(){
         {
           btn_state_crash = false;
           btn_state_alarm = false;
+          btn_state = NO_ACTIVE;
           btn_time_press = 0;
           btn_time_release = 0;
           Serial.println("ALARM is OFF");
@@ -56,6 +58,7 @@ void Button::poll(){
         {
           btn_state_alarm = false;
           btn_state_crash = true;
+          btn_state = CRASH_STATE;
           btn_time_press = 0;
           btn_time_release = 0;
           Serial.println("CRASH HAPPENED");
@@ -63,6 +66,7 @@ void Button::poll(){
         {
           btn_state_alarm = false;
           btn_state_crash = false;
+          btn_state = NO_ACTIVE;
           btn_time_press = 0;
           btn_time_release = 0;
           Serial.println("CRASH FIXED");
@@ -74,8 +78,7 @@ void Button::poll(){
 }
 
 bool Button::get_state(){
-     
-    if(btn_state_alarm) return btn_state_alarm;
-    if(btn_state_crash) return btn_state_crash; 
+
+  return btn_state;
 
 }

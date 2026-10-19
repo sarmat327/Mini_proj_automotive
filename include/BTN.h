@@ -9,6 +9,7 @@ private:
 
     bool btn_state_alarm = false;
     bool btn_state_crash = false;
+    u8_t btn_state = 0;             //змінна яка потрібна щоб керувати LED
     bool btn_was_pressed = false;
     bool btn_short_event = false;
     bool btn_long_event = false;
@@ -24,4 +25,4 @@ public:
     void poll();
     bool get_state();
 
-}
+};
