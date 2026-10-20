@@ -6,10 +6,14 @@
 class Button
 {
 private:
-
+    enum BTN_STATES{
+    NO_ACTIVE,
+    ALARM_STATE,
+    CRASH_STATE,
+    };
     bool btn_state_alarm = false;
     bool btn_state_crash = false;
-    u8_t btn_state = 0;             //змінна яка потрібна щоб керувати LED
+    BTN_STATES btn_state = NO_ACTIVE;             //змінна яка потрібна щоб керувати LED
     bool btn_was_pressed = false;
     bool btn_short_event = false;
     bool btn_long_event = false;
