@@ -2,6 +2,8 @@
 #include "config.h"
 #include "BTN.h"
 
+
+
 void Button::init(){
     pinMode(BTN, INPUT_PULLDOWN);
 }

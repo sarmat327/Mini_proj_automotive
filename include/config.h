@@ -18,10 +18,6 @@
 #define LED_BLINK_PERIOD_MS 500
 #define LED_BLINK_CRASH_PERIOD_MS 50
 
-enum BTN_STATES{
-    NO_ACTIVE,
-    ALARM_STATE,
-    CRASH_STATE,
-};
+
 
 
